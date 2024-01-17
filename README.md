@@ -6,7 +6,7 @@
 <div align="center">
    <img src="images/avatar-gitbook.png" alt="Logo" width="220" height="220">
 
-  <h3 align="center">Raiden Shogun Discord Bot</h3>
+  <h3 align="center">Raijin Discord Bot</h3>
 
   <p align="center">
     Have you ever wanted to live an New Inazuma Adventure on Discord ?
@@ -25,7 +25,7 @@
 
 ⚠️ **STILL IN DEVELOPMENT, NOT FINISHED YET**
 
-⚠️ I'm a Young Student Developer that create this by himself for fun so my code work but can be a lot different about what real dev do and not optimized at all !
+⚠️ DISCLAIMER : I'm a Student Developer that create this by himself for fun. My code work but can be a lot different about what real dev do and not optimized at all.
 
 
 
