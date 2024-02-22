@@ -38,7 +38,7 @@ So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on 
 
 
 
-### Good to know
+## Good to know
 
 ⚠️ **STILL IN DEVELOPMENT, NOT FINISHED YET**
 
@@ -47,7 +47,7 @@ So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on 
 
 
 
-### Supported languages
+## Supported languages
 
 🇫🇷 **Français**
 
@@ -56,7 +56,7 @@ So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on 
 
 
 
-### Languages used
+## Languages used
 
 [![Made withJupyter](https://img.shields.io/badge/Made%20with-Python-yellow?style=for-the-badge&logo=Python)](https://python.org/)
 
@@ -68,7 +68,7 @@ Using :
 
 
 
-### Roadmap at 22/02/24
+## Roadmap at 22/02/24
 
 - [ ] Create all the design for the chapters
 - [ ] Add companions earning when reaching a chapter
@@ -81,7 +81,7 @@ Using :
 
 
 
-### Getting started
+## Getting started
 
 Clone the Repository and open it on your IDE.
    ```sh
