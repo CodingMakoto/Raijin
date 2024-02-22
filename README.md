@@ -21,25 +21,15 @@
 
 
 
-## Last Informations
-
-⚠️ **STILL IN DEVELOPMENT, NOT FINISHED YET**
-
-⚠️ DISCLAIMER : I'm a Student Developer that create this by himself. My code work but can be a lot different about what real dev do and not optimized at all.
-
-
-
-## Languages supported
-
-🇫🇷 **Français**
-
-🇬🇧 **English**
-
-
 
 ## Discover Raijin
 
-So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on Discord based on the Genshin Impact Game. I can fetch your Personal Info in the real game also, with me you are going to discover the New Adventure with a new guide named : Makoto and visit a New Island inspired of Genshin Impact, complete quests and chapters, view your daily quests, heal yourself by using statues of the seven, meet bosses and fight them, collect materials and earn characters to be more powerful in battle !.
+So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on Discord based on the Genshin Impact Game. I can fetch your Personal Info in the real game also, with me you are going to discover the New Adventure with a new guide named : Makoto and visit a New Island inspired of Genshin Impact.
+- Complete quests and chapters
+- View your daily quests
+- Heal yourself by using statues of the seven
+- Meet bosses and fight them
+- Collect materials and earn characters to be more powerful in battle !
 
 <p align="center">
   <img src="images/1-english.jpg"/>
@@ -47,7 +37,26 @@ So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on 
 
 
 
-## Languages Used
+
+### Good to know
+
+⚠️ **STILL IN DEVELOPMENT, NOT FINISHED YET**
+
+⚠️ DISCLAIMER : I'm a Student Developer that create this by himself. My code work but can be a lot different about what real dev do and not optimized at all.
+
+
+
+
+### Supported languages
+
+🇫🇷 **Français**
+
+🇬🇧 **English**
+
+
+
+
+### Languages used
 
 [![Made withJupyter](https://img.shields.io/badge/Made%20with-Python-yellow?style=for-the-badge&logo=Python)](https://python.org/)
 
@@ -59,12 +68,26 @@ Using :
 
 
 
-## Getting Started
+### Roadmap at 22/02/24
+
+- [ ] Create all the design for the chapters
+- [ ] Add companions earning when reaching a chapter
+- [ ] Add the five first chapters of the story mode
+- [ ] Add a user profile command
+- [ ] Add boss fight in story mode
+- [ ] Add random boss fight with cooldown command
+- [ ] Add healing with statues of the seven command
+
+
+
+
+### Getting started
 
 Clone the Repository and open it on your IDE.
    ```sh
    git clone https://github.com/CodingMakoto/Raiden-Shogun-Discord-Bot.git
    ```
+
 
 
 
