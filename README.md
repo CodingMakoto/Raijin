@@ -82,6 +82,7 @@ Using :
 - [ ] Add random boss fight with cooldown command
 - [ ] Add healing with statues of the seven command
 - [ ] Add shops and story characters
+- [ ] Add daily quests
 
 
 
