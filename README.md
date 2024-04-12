@@ -68,24 +68,6 @@ Using :
 
 
 
-## Roadmap at 22/02/24
-
-- [x] Add Genshin music commands
-- [x] Add account creation and deletion
-- [x] Add fetching of real game stats command
-- [x] Add uid of the user into Raijin command
-- [ ] Create all the design for the chapters
-- [ ] Add companions earning when reaching a chapter
-- [ ] Add the five first chapters of the story mode
-- [ ] Add a user profile command
-- [ ] Add boss fight in story mode
-- [ ] Add random boss fight with cooldown command
-- [ ] Add healing with statues of the seven command
-- [ ] Add shops and story characters
-- [ ] Add daily quests
-
-
-
 
 ## Getting started
 
