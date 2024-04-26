@@ -11,6 +11,7 @@ Events:
 
 
 import discord
+import time
 
 
 intents = discord.Intents.all()
@@ -60,14 +61,17 @@ async def on_guild_join(guild):
 async def on_application_command_error(ctx: discord.ApplicationContext,
     error: discord.DiscordException):
     """
-    Send a message when an error appear on command call
+    Send a message when an error appear on command call/execution
     """
     if isinstance(error, discord.ApplicationCommandError):
+        local = time.localtime()
+        current_time = time.strftime("%H:%M:%S", local)
         errors = discord.Embed(
-            title="There was an error while executing command",
-            description=f"Error: `{error}`",
-            color=DEFAULT_COLOR,
+            title="Error while executing the command",
+            description=f"Please report this error below in our discord server <:raidencry:1189307566606520501>\n`{error}`",
+            color=0xFF0000,
         )
+        errors.set_footer(text=f"Detected at {current_time} UTC")
         await ctx.respond(embed=errors)
 
 
@@ -87,11 +91,11 @@ async def on_ready():
     print("Raijin Beta is Ready")
 
 
-bot.load_extension("help")
-bot.load_extension("personal")
-bot.load_extension("story")
-bot.load_extension("music")
-bot.load_extension("fetch")
+bot.load_extension("src.help")
+bot.load_extension("src.personal")
+bot.load_extension("src.story")
+bot.load_extension("src.music")
+bot.load_extension("sql.fetch")
 
 
 bot.run("TOKEN")
