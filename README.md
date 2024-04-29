@@ -4,7 +4,7 @@
 
 <br />
 <div align="center">
-   <img src="images/avatar-gitbook.png" alt="Logo" width="220" height="220">
+   <img src="res/images/avatar-github.png" alt="Logo" width="220" height="220">
 
   <h3 align="center">Raijin Discord Bot</h3>
 
@@ -32,7 +32,7 @@ So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on 
 - Collect materials and earn characters to be more powerful in battle !
 
 <p align="center">
-  <img src="images/1-english.jpg"/>
+  <img src="res/images/story/1-english.jpg"/>
 </p>
 
 
