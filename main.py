@@ -12,6 +12,7 @@ Events:
 
 import discord
 import time
+import json
 
 
 intents = discord.Intents.all()
@@ -27,24 +28,14 @@ async def on_guild_join(guild):
     Send a message when Raijin is joining a guild
     """
     file = discord.File(
-        "images/avatar-wb.png", filename="avatar.png"
+        "res/images/avatar-wb.png", filename="avatar.png"
     )
+    en_EN_file = open('/res/lang/en_EN.json')
+    list = json.load(en_EN_file)
     title = "<:raidenbird:1080897824440455288>  Raijin Discord Bot"
     welcoming = discord.Embed(
         title=title,
-        description="So... you want to start a new adventure with me ?\n\n\
-        > ・ Raijin Discord Bot is an Unofficial Genshin Impact \
-        Discord Bot using ONLY Slash Commands\n> ・ I can start the adventure\
-        for you with `account start`\n> ・ To end the adventure with me use \
-        `/account end`\n> ・ When your account is created use `/story mode`\
-        and enjoy the adventure <:raidenangry:1080897820854329376>\n\
-        > ・ During your adventure you can fight bosses, recover your health with Archons Statues,\
-        fight hilichurls, discover daily quests and more...\n> ・ I let you discover that by yourself\
-        using `/help` <:raidenlaugh:1080898399336931429>\n> ・ You have more\
-        questions ? Well then I let you enter in Raijin City ⚡ :\
-        https://discord.gg/2AePNcphrs\n\n<:beta:1233039955631276172> **Warning**: Currently \
-        in **BETA** version, some commands may not\
-        work as expected",
+        description=list['welcome'],
         color=DEFAULT_COLOR,
     )
     welcoming.set_thumbnail(url="attachment://avatar.png")
