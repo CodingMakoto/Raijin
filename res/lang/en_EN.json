@@ -1,0 +1,51 @@
+{
+    "errors": {
+        "commands": {
+          "title": "Command not found",
+          "details": "The command your searching isn't existing\nUse `/help` to get all the commands available"
+        }
+    },
+    "help": {
+      "title": "So... you requested Raijin help ?",
+      "description": "You need my help ?\nWell then select a category down there that can help you <:raidenbird:1080897824440455288>\n\n**Specific command**:\nYou need help with a specific command ? Use the **command** option with `/help` to get more details\n\n**Useful links**:\n • ⚡ [Raijin City](https://discord.gg/2AePNcphrs)\n • <:github:1233415410641272903> [Raijin Github](https://github.com/CodingMakoto/Raiden-Shogun-Discord-Bot)",
+      "selection": "Select a category...",
+      "callback": {
+        "title": "<:heizouimthebest:1081239099039547472> You want to jump into your new adventure ?",
+        "description": "Here are the commands related to the story. All of these commands are explained with the command `/help` and the **command** option <:raidenexplaining:1080898396342194208>\n> /story mode\n> /story profile\n> /story chapters\n> /story quests"
+      },
+      "options": {
+        "story": {
+          "title": "Story",
+          "description": "Start a new day with Makoto"
+        },
+        "shops": {
+          "title": "Shops",
+          "description": "Meet new people and buy objects to collect them"
+        },
+        "quests": {
+          "title": "Daily Quests",
+          "description": "Check your Daily Quests"
+        },
+        "personal": {
+          "title": "Personal",
+          "description": "Everything about your Adventure with Raijin and Genshin Impact"
+        }
+      }
+    },
+    "commands": {
+        "help": {
+          "title": "Help command",
+          "details": "This is the help command"
+        }
+    },
+    "quests": {
+        "1": "Go talk to Makoto and ask him for an information",
+        "2": "Inquire about the command: `/story quests'",
+        "3": "Discover your profile in Genshin Impact"
+    },
+    "story": {
+        "0": "You will be approaching the beginning of your adventure but first you must know that you must use the buttons below to select the rest of the story ! Each chapter of this adventure is illustrated by the image below, good luck, I believe in you <:raidenlaugh:1080898399336931429>",
+        "1": "<:makoto:1124677514762145802> **Chapter 1** : ***A New World***",
+        "2": "Chapter 2 : An Unpleasant Meeting"
+    }
+}

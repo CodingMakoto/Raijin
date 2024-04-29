@@ -1,0 +1,51 @@
+{
+    "errors": {
+        "commands": {
+          "title": "Commande introuvable",
+          "details": "La commande que vous recherchez n’existe pas\nUtilisez `/help' pour obtenir toutes les commandes disponibles"
+        }
+    },
+    "help": {
+      "title": "Alors... vous avez demandé l’aide de Raijin ?",
+      "description": "Vous avez besoin de mon aide ?\nAlors sélectionnez une catégorie en dessous qui peut vous aider <:raidenbird:1080897824440455288>\n\n**Commande spécifique**:\nVous avez besoin d’aide avec une commande spécifique ? Utilisez l’option **command** avec `/help’ pour obtenir plus de détails\n\n**Liens utiles**:\n • ⚡ [Raijin City](https://discord.gg/2AePNcphrs)\n • <:github:1233415410641272903> [Raijin Github](https://github.com/CodingMakoto/Raiden-Shogun-Discord-Bot)",
+      "selection": "Sélectionnez une catégorie...",
+      "callback": {
+        "title": "<:heizouimthebest:1081239099039547472> Vous voulez vous lancer dans votre nouvelle aventure ?",
+        "description": "Voici les commandes liées à l’histoire. Toutes ces commandes sont expliquées avec la commande `/help` et l'option **command** <:raidenexplaining:1080898396342194208>\n> /story mode\n> /story profile\n> /story chapters\n> /story quests"
+      },
+      "options": {
+        "story": {
+          "title": "Histoire",
+          "description": "Commencez une nouvelle journée avec Makoto"
+        },
+        "shops": {
+          "title": "Magasins",
+          "description": "Rencontrez de nouvelles personnes et acheter des objets à collectionner"
+        },
+        "quests": {
+          "title": "Quêtes quotidiennes",
+          "description": "Explorez vos quêtes quotidiennes"
+        },
+        "personal": {
+          "title": "Personnel",
+          "description": "Tout sur votre Aventure avec Raijin et Genshin Impact"
+        }
+      }
+    },
+    "commands": {
+        "help": {
+          "title": "Commande d'aide",
+          "details": "C'est la commande d'aide"
+        }
+    },
+    "quests": {
+        "1": "Allez parler a Makoto et demandez lui une information",
+        "2": "Renseignez vous sur la commande: `/story quests`",
+        "3": "Découvrez votre profil dans Genshin Impact"
+    },
+    "chapters": {
+        "0": "Tu vas approcher du début de ton aventure mais avant tu dois savoir que tu doit utiliser les boutons en dessous pour sélectionner la suite de l’histoire ! Chaque chapitre de cette aventure est illustré par l'image ci-dessous, bonne chance, je crois en toi <:raidenlaugh:1080898399336931429>",
+        "1": "<:makoto:1124677514762145802> **Chapitre 1** : ***Un nouveau monde***",
+        "2": "Chapitre 2 : Une rencontre désagréable"
+    }
+}
