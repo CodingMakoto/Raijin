@@ -10,11 +10,11 @@ Events:
 """
 
 
-import discord
 import time
 import json
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
+import discord
 
 
 load_dotenv()
@@ -32,12 +32,12 @@ async def on_guild_join(guild):
     file = discord.File(
         "res/images/avatar-wb.png", filename="avatar.png"
     )
-    en_EN_file = open('res/lang/en_EN.json')
-    list = json.load(en_EN_file)
+    en_file = open('res/lang/en_EN.json', encoding="utf-8")
+    messages = json.load(en_file)
     title = "<:raidenbird:1080897824440455288>  Raijin Discord Bot"
     welcoming = discord.Embed(
         title=title,
-        description=list['welcome'],
+        description=messages['welcome'],
         color=DEFAULT_COLOR,
     )
     welcoming.set_thumbnail(url="attachment://avatar.png")
@@ -61,7 +61,8 @@ async def on_application_command_error(ctx: discord.ApplicationContext,
         current_time = time.strftime("%H:%M:%S", local)
         errors = discord.Embed(
             title="Error while executing the command",
-            description=f"Please report this error below in our discord server <:raidencry:1189307566606520501>\n`{error}`",
+            description=f"Please report this error below in our discord\
+            server <:raidencry:1189307566606520501>\n`{error}`",
             color=0xFF0000,
         )
         errors.set_footer(text=f"Detected at {current_time} UTC")
