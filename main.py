@@ -13,12 +13,14 @@ Events:
 import discord
 import time
 import json
+from dotenv import load_dotenv
+import os
 
 
+load_dotenv()
+raijin_token = os.getenv("BOT_TOKEN")
 intents = discord.Intents.all()
 bot = discord.Bot(intents=intents)
-
-
 DEFAULT_COLOR = 0x37266A
 
 
@@ -30,7 +32,7 @@ async def on_guild_join(guild):
     file = discord.File(
         "res/images/avatar-wb.png", filename="avatar.png"
     )
-    en_EN_file = open('/res/lang/en_EN.json')
+    en_EN_file = open('res/lang/en_EN.json')
     list = json.load(en_EN_file)
     title = "<:raidenbird:1080897824440455288>  Raijin Discord Bot"
     welcoming = discord.Embed(
@@ -89,4 +91,4 @@ bot.load_extension("src.music")
 bot.load_extension("sql.fetch")
 
 
-bot.run("TOKEN")
+bot.run(raijin_token)
