@@ -4,61 +4,65 @@ fetch/update/insert user informations
 of/into Raijin database.
 
 Commands:
-    - setInit
     - getAccount
     - getLang
 """
 
 
-import asyncio
 import discord
-from discord.errors import ApplicationCommandError
 import mysql.connector
 
 
 class Fetch(discord.Cog):
+    """
+    Fetch class purpose is to have all the usefull queries
+    in a single file to save lines on others
+    """
     def __init__(self, bot):
         self.bot = bot
+        self.mydb = mysql.connector.connect(
+            host="",
+            user="",
+            password="",
+            database="",
+            auth_plugin="",
+        )
+        self.cursor = self.mydb.cursor()
 
 
-    def setInit(self):
-        try:
-            self.mydb = mysql.connector.connect(
-                host="",
-                user="",
-                password="",
-                database="",
-                auth_plugin="",
-            )
-            return self.mydb
-        except TimeoutError or ConnectionError:
-            raise ApplicationCommandError("Cannot connect to the database, please retry later")
-
-
-    def getAccount(self, ctx, cursor, member: int, guild: int):
-        cursor.execute(
+    def getaccount(self, member: int, guild: int):
+        """
+        Look for an existing account with the informations gived,
+        return None if not existing
+        """
+        self.cursor.execute(
             f"SELECT `NAME` FROM `Account` WHERE `ID` = '{member}' AND `GUILD` = '{guild}'"
         )
-        account_exist = cursor.fetchone()
+        account_exist = self.cursor.fetchone()
         if account_exist is not None:
             return True
-        else:
-            return None
+        return None
 
 
-    def getLang(self, ctx, cursor, member: int, guild: int):
+    def getlang(self, member: int, guild: int):
+        """
+        Look for an existing lang with the informations gived,
+        return None if not existing
+        """
         lang = ""
-        cursor.execute(
+        self.cursor.execute(
             f"SELECT `LANG` FROM `Account` WHERE `ID` = '{member}' AND `GUILD` = '{guild}'"
         )
-        lang_fetch = cursor.fetchone()
+        lang_fetch = self.cursor.fetchone()
         if lang_fetch is not None:
             for languages in lang_fetch:
                 lang += languages
             return lang
-        else:
-            return None
+        return None
 
 
 def setup(bot):
+    """
+    Add the Fetch cog to the main file
+    """
     bot.add_cog(Fetch(bot))
