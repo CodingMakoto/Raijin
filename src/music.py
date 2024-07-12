@@ -12,18 +12,17 @@ Commands:
 """
 
 
-import discord
-from discord import SlashCommandGroup
-
 import random
 import sys
 import os
 import asyncio
 import json
+
+import discord
+from discord import SlashCommandGroup
+
 import audioread
-import ffmpeg
 from mutagen.mp3 import MP3
-import mysql.connector
 
 sys.path.append("..")
 from sql.fetch import *
@@ -32,7 +31,7 @@ from sql.fetch import *
 class MusicDisabled(discord.ui.View):
     """
     Music Disabled class is made to ensure that next and shuffle
-    buttons are disabled for every music
+    buttons are disabled for every song
     They are empty because they are disabled all the time
     """
     def __init__(self, musiccog, context):
@@ -42,22 +41,34 @@ class MusicDisabled(discord.ui.View):
 
     @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="⏯️")
     async def play_pause_callback(self, button, interaction):
+        """
+        Play if the song is paused or pause if the song is played
+        """
         button.disabled = False
         await self.musiccog.m_pause(self.context)
         await interaction.response.edit_message(view=self)
 
     @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="⏹️")
     async def stop_callback(self, button, interaction):
+        """
+        Stop the song and quit the channel
+        """
         button.disabled = True
         await self.musiccog.m_stop(self.context)
         await interaction.response.edit_message(view=self)
 
     @discord.ui.button(style=discord.ButtonStyle.secondary, disabled=True, emoji="⏭️")
     async def next_callback(self):
+        """
+        Disabled for every song because the shuffle mode is activated
+        """
         pass
 
     @discord.ui.button(style=discord.ButtonStyle.secondary, disabled=True, emoji="🔀")
     async def shuffle_callback(self):
+        """
+        Disabled for every song because the shuffle mode is activated
+        """
         pass
 
 
@@ -74,24 +85,36 @@ class MusicPlay(discord.ui.View):
 
     @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="⏯️")
     async def play_pause_callback(self, button, interaction):
+        """
+        Play if the song is paused or pause if the song is played
+        """
         button.disabled = False
         await self.musiccog.m_pause(self.context)
         await interaction.response.edit_message(view=self)
 
     @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="⏹️")
     async def stop_callback(self, button, interaction):
+        """
+        Stop the song and quit the channel
+        """
         button.disabled = True
         await self.musiccog.m_stop(self.context)
         await interaction.response.edit_message(view=self)
 
     @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="⏭️")
     async def next_callback(self, button, interaction):
+        """
+        Stop the song and change to the next one
+        """
         button.disabled = False
         await interaction.message.delete()
         await self.musiccog.m_next(self.context)
 
     @discord.ui.button(style=discord.ButtonStyle.secondary, emoji="🔀")
     async def shuffle_callback(self, button, interaction):
+        """
+        Activate shuffle mode and desactivate next and shuffle buttons
+        """
         button.disabled = True
         await interaction.message.delete()
         await self.musiccog.m_shuffle(self.context)
@@ -100,16 +123,18 @@ class MusicPlay(discord.ui.View):
 class Music(discord.Cog):
     """
     Music Cog is the main function to play, resume, stop and shuffle music
-    The default bitrate is 128pbs and the shuffle command is playing
+    The default bitrate is 128 and the shuffle command is playing
     automatically music
     """
     def __init__(self, bot):
         self.bot = bot
         self.default_color = 0x37266A
-        self.fr_FR_file = open(os.path.dirname(__file__) + '/../res/lang/fr_FR.json')
-        self.en_EN_file = open(os.path.dirname(__file__) + '/../res/lang/en_EN.json')
-        self.fr_FR = json.load(self.fr_FR_file)
-        self.en_EN = json.load(self.en_EN_file)
+        self.fr_file = open(os.path.dirname(__file__) + '/../res/lang/fr_FR.json',
+            encoding="utf-8")
+        self.fr_lang = json.load(self.fr_file)
+        self.en_file = open(os.path.dirname(__file__) + '/../res/lang/en_EN.json',
+            encoding="utf-8")
+        self.en_lang = json.load(self.en_file)
         self.mydb = Fetch(self.bot).setInit()
         self.cursor = self.mydb.cursor()
 
@@ -120,17 +145,21 @@ class Music(discord.Cog):
 
     @dj.command(name="raijin", description="🎧 Listen to Inazuma Music")
     async def m_start(self, ctx):
+        """
+        Ensure that the user is in a voice channel, start a song from the
+        tracks folder and send a message to the user
+        """
         self.mydb.ping(reconnect=True)
 
         vc = ctx.voice_client
-        FFMPEG_OPTIONS = {'options': '-vn -loglevel quiet'}
+        ffmpeg_options = {'options': '-vn -loglevel quiet'}
 
         lang = Fetch(self.bot).getLang(self, self.cursor, ctx.author.id, ctx.guild.id)
 
         if lang == "Français":
-            list = self.fr_FR
+            langlist = self.fr_lang
         else:
-            list = self.en_EN
+            langlist = self.en_lang
         if ctx.author.voice:
             if not vc:
                 vc = await ctx.author.voice.channel.connect()
@@ -142,7 +171,8 @@ class Music(discord.Cog):
                     await ctx.respond(embed=warning, ephemeral=True)
                 else:
                     choice = random.choice(os.listdir("res/tracks/"))
-                    song = discord.FFmpegOpusAudio("res/tracks/" + choice, bitrate=64, **FFMPEG_OPTIONS)
+                    song = discord.FFmpegOpusAudio("res/tracks/" + choice, bitrate=64,
+                        **ffmpeg_options)
                     title = choice.replace(".mp3", "")
 
                     if not song:
@@ -188,8 +218,12 @@ class Music(discord.Cog):
             await ctx.respond(embed=warning, ephemeral=True)
 
     async def m_next(self, ctx):
+        """
+        Ensure that the user is in a voice channel, stop the song and change to
+        a new one
+        """
         vc = ctx.voice_client
-        FFMPEG_OPTIONS = {'options': '-vn -loglevel quiet'}
+        ffmpeg_options = {'options': '-vn -loglevel quiet'}
 
         if ctx.author.voice:
             if not vc:
@@ -198,7 +232,7 @@ class Music(discord.Cog):
                 if ctx.voice_client.is_playing():
                     vc.stop()
                 choice = random.choice(os.listdir("res/tracks/"))
-                song = discord.FFmpegOpusAudio("res/tracks/" + choice, bitrate=64, **FFMPEG_OPTIONS)
+                song = discord.FFmpegOpusAudio("res/tracks/" + choice, bitrate=64, **ffmpeg_options)
                 title = choice.replace(".mp3", "")
 
                 if not song:
@@ -244,6 +278,10 @@ class Music(discord.Cog):
             await ctx.respond(embed=warning, ephemeral=True)
 
     async def m_stop(self, ctx):
+        """
+        Ensure that the user is in a voice channel, stop the song and
+        quit the voice channel
+        """
         vc = ctx.voice_client
 
         if vc:
@@ -260,6 +298,10 @@ class Music(discord.Cog):
             await ctx.respond(embed=error, ephemeral=True)
 
     async def m_pause(self, ctx):
+        """
+        Ensure that the user is in a voice channel, pause the song
+        if playing or play the song if paused
+        """
         vc = ctx.voice_client
 
         if vc:
@@ -269,8 +311,12 @@ class Music(discord.Cog):
                 vc.resume()
 
     async def m_shuffle(self, ctx):
+        """
+        Ensure that the user is in a voice channel and activate
+        the shuffle mode
+        """
         vc = ctx.voice_client
-        FFMPEG_OPTIONS = {'options': '-vn -loglevel quiet'}
+        ffmpeg_options = {'options': '-vn -loglevel quiet'}
 
         if vc:
             if not vc:
@@ -280,7 +326,7 @@ class Music(discord.Cog):
                     vc.stop()
                 choice = random.choice(os.listdir("res/tracks/"))
                 song = discord.FFmpegOpusAudio("res/tracks/" \
-                    + choice, bitrate=64, **FFMPEG_OPTIONS)
+                    + choice, bitrate=64, **ffmpeg_options)
                 title = choice.replace(".mp3", "")
 
                 if not song:
@@ -321,4 +367,7 @@ class Music(discord.Cog):
 
 
 def setup(bot):
+    """
+    Add the main music cog to the main file
+    """
     bot.add_cog(Music(bot))
