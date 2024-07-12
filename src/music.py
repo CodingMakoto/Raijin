@@ -21,6 +21,7 @@ import os
 import asyncio
 import json
 import audioread
+import ffmpeg
 from mutagen.mp3 import MP3
 import mysql.connector
 
@@ -122,7 +123,7 @@ class Music(discord.Cog):
         self.mydb.ping(reconnect=True)
 
         vc = ctx.voice_client
-        ffmpeg_options = {'options': '-vn -loglevel quiet'}
+        FFMPEG_OPTIONS = {'options': '-vn -loglevel quiet'}
 
         lang = Fetch(self.bot).getLang(self, self.cursor, ctx.author.id, ctx.guild.id)
 
@@ -140,8 +141,8 @@ class Music(discord.Cog):
                         : `/music next` to listen to another song", color=self.default_color)
                     await ctx.respond(embed=warning, ephemeral=True)
                 else:
-                    choice = random.choice(os.listdir("tracks/"))
-                    song = discord.FFmpegOpusAudio("tracks/" + choice, bitrate=64, **ffmpeg_options)
+                    choice = random.choice(os.listdir("res/tracks/"))
+                    song = discord.FFmpegOpusAudio("res/tracks/" + choice, bitrate=64, **FFMPEG_OPTIONS)
                     title = choice.replace(".mp3", "")
 
                     if not song:
@@ -156,14 +157,14 @@ class Music(discord.Cog):
                         seconds = length
                         return mins, seconds
 
-                    with audioread.audio_open(f"tracks/{choice}") as f:
+                    with audioread.audio_open(f"res/tracks/{choice}") as f:
                         total = f.duration
                         mins, seconds = duration(int(total))
 
-                    mp3 = MP3(f"tracks/{choice}")
+                    mp3 = MP3(f"res/tracks/{choice}")
                     bitrate = mp3.info.bitrate / 1000
 
-                    file = discord.File("images/rote.jpg", filename="rote.jpg")
+                    file = discord.File("res/images/rote.jpg", filename="rote.jpg")
                     info = discord.Embed(
                         title=title,
                         description=f"・**Duration**: \
@@ -188,7 +189,7 @@ class Music(discord.Cog):
 
     async def m_next(self, ctx):
         vc = ctx.voice_client
-        ffmpeg_options = {'options': '-vn -loglevel quiet'}
+        FFMPEG_OPTIONS = {'options': '-vn -loglevel quiet'}
 
         if ctx.author.voice:
             if not vc:
@@ -196,8 +197,8 @@ class Music(discord.Cog):
             if ctx.author.voice.channel.id == vc.channel.id:
                 if ctx.voice_client.is_playing():
                     vc.stop()
-                choice = random.choice(os.listdir("tracks/"))
-                song = discord.FFmpegOpusAudio("tracks/" + choice, bitrate=64, **ffmpeg_options)
+                choice = random.choice(os.listdir("res/tracks/"))
+                song = discord.FFmpegOpusAudio("res/tracks/" + choice, bitrate=64, **FFMPEG_OPTIONS)
                 title = choice.replace(".mp3", "")
 
                 if not song:
@@ -212,14 +213,14 @@ class Music(discord.Cog):
                     seconds = length
                     return mins, seconds
 
-                with audioread.audio_open(f"tracks/{choice}") as f:
+                with audioread.audio_open(f"res/tracks/{choice}") as f:
                     total = f.duration
                     mins, seconds = duration(int(total))
 
-                mp3 = MP3(f"tracks/{choice}")
+                mp3 = MP3(f"res/tracks/{choice}")
                 bitrate = mp3.info.bitrate / 1000
 
-                file = discord.File("images/rote.jpg", filename="rote.jpg")
+                file = discord.File("res/images/rote.jpg", filename="rote.jpg")
                 info = discord.Embed(
                     title=title,
                     description=f"・**Duration**: \
@@ -269,7 +270,7 @@ class Music(discord.Cog):
 
     async def m_shuffle(self, ctx):
         vc = ctx.voice_client
-        ffmpeg_options = {'options': '-vn -loglevel quiet'}
+        FFMPEG_OPTIONS = {'options': '-vn -loglevel quiet'}
 
         if vc:
             if not vc:
@@ -277,9 +278,9 @@ class Music(discord.Cog):
             if ctx.author.voice.channel.id == vc.channel.id:
                 if ctx.voice_client.is_playing():
                     vc.stop()
-                choice = random.choice(os.listdir("tracks/"))
-                song = discord.FFmpegOpusAudio("tracks/" \
-                    + choice, bitrate='64', **ffmpeg_options)
+                choice = random.choice(os.listdir("res/tracks/"))
+                song = discord.FFmpegOpusAudio("res/tracks/" \
+                    + choice, bitrate=64, **FFMPEG_OPTIONS)
                 title = choice.replace(".mp3", "")
 
                 if not song:
@@ -298,10 +299,10 @@ class Music(discord.Cog):
                     total = f.duration
                     mins, seconds = duration(int(total))
 
-                mp3 = MP3(f"tracks/{choice}")
+                mp3 = MP3(f"res/tracks/{choice}")
                 bitrate = mp3.info.bitrate / 1000
 
-                file = discord.File("images/rote.jpg", filename="rote.jpg")
+                file = discord.File("res/images/rote.jpg", filename="rote.jpg")
                 info = discord.Embed(
                     title=title,
                     description=f"・**Duration**: \
