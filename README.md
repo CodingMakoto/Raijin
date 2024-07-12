@@ -4,7 +4,7 @@
 
 <br />
 <div align="center">
-   <img src="res/images/avatar-github.png" alt="Logo" width="220" height="220">
+   <img src="res/images/avatar-wb.png" alt="Logo" width="220" height="220">
 
   <h3 align="center">Raijin Discord Bot</h3>
 
