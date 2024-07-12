@@ -42,6 +42,8 @@ So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on 
 
 ⚠️ **STILL IN DEVELOPMENT, NOT FINISHED YET**
 
+⚠️ Use the RELEASES files and not those of the main branch
+
 ⚠️ DISCLAIMER : I'm a Student Developer that create this by himself. My code work but can be a lot different about what real dev do and not optimized at all.
 
 
