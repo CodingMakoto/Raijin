@@ -19,7 +19,6 @@ sys.path.append("..")
 from sql.fetch import *
 
 
-
 class Help(discord.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -46,6 +45,8 @@ class Help(discord.Cog):
         """
         Send a help menu with multiple choice/Send details about a specific command
         """
+        self.mydb.ping(reconnect=True)
+
         lang = Fetch(self.bot).getLang(self, self.cursor, ctx.author.id, ctx.guild.id)
 
         if lang == "Français":
