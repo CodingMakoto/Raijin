@@ -42,9 +42,9 @@ So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on 
 
 ⚠️ **STILL IN DEVELOPMENT, NOT FINISHED YET**
 
-⚠️ Use the RELEASES files and not those of the main branch
+⚠️ Stable version are only RELEASES files and not those of the main branch
 
-⚠️ DISCLAIMER : I'm a Student Developer that create this by himself. My code work but can be a lot different about what real dev do and not optimized at all.
+⚠️ DISCLAIMER : I'm a Student Developer that create this by himself. My code work but can be very different from many advanced bots
 
 
 
@@ -71,23 +71,12 @@ Using :
 
 
 
-## Getting started
-
-Clone the Repository and open it on your IDE.
-   ```sh
-   git clone https://github.com/CodingMakoto/Raiden-Shogun-Discord-Bot.git
-   ```
-
-
-
-
 ## Contact
 
 For any questions we invite you to join us on the [Discord Server](https://discord.gg/2AePNcphrs).
 
 Also you can post your issue if you have one on this repository issue page.
 
-[raiden-example]: images/example.jpeg
 
 [JSON]: https://img.shields.io/badge/Json-f7df1e?style=for-the-badge&logo=json&logoColor=383838
 [JSON-url]: https://json.org/
