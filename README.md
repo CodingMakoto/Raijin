@@ -24,7 +24,8 @@
 
 ## Discover Raijin
 
-So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on Discord based on the Genshin Impact Game. I can fetch your Personal Info in the real game also, with me you are going to discover the New Adventure with a new guide named : Makoto and visit a New Island inspired of Genshin Impact.
+Hello Adventurer ! I'm Raijin, your new Discord bot companion (You can't choose). Inspired by the real Genshin Impact game, my mission is to bring a fresh adventure to your Discord experience. I can even fetch your personal information from the real game. Embark on a new journey with me and our guide (His name is Makoto) as we explore a new island inspired by Genshin Impact. Get ready for an exciting adventure !
+Your going to:
 - Complete quests and chapters
 - View your daily quests
 - Heal yourself by using statues of the seven
