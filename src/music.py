@@ -11,9 +11,7 @@ Commands:
     - stop
 """
 
-
 import random
-import sys
 import os
 import asyncio
 import json
@@ -24,9 +22,6 @@ from discord import SlashCommandGroup
 import audioread
 from mutagen.mp3 import MP3
 
-sys.path.append("..")
-from sql.fetch import *
-
 
 class MusicDisabled(discord.ui.View):
     """
@@ -34,6 +29,7 @@ class MusicDisabled(discord.ui.View):
     buttons are disabled for every song
     They are empty because they are disabled all the time
     """
+
     def __init__(self, musiccog, context):
         discord.ui.View.__init__(self, timeout=None)
         self.musiccog = musiccog
@@ -78,6 +74,7 @@ class MusicPlay(discord.ui.View):
         - play, pause, next and shuffle functions
     This class is called for the normal player only
     """
+
     def __init__(self, musiccog, context):
         discord.ui.View.__init__(self, timeout=None)
         self.musiccog = musiccog
@@ -126,18 +123,23 @@ class Music(discord.Cog):
     The default bitrate is 128 and the shuffle command is playing
     automatically music
     """
+
     def __init__(self, bot):
         self.bot = bot
         self.default_color = 0x37266A
         self.fr_file = open(os.path.dirname(__file__) + '/../res/lang/fr_FR.json',
-            encoding="utf-8")
+                            encoding="utf-8")
         self.fr_lang = json.load(self.fr_file)
         self.en_file = open(os.path.dirname(__file__) + '/../res/lang/en_EN.json',
-            encoding="utf-8")
+                            encoding="utf-8")
         self.en_lang = json.load(self.en_file)
-        self.mydb = Fetch(self.bot).setInit()
-        self.cursor = self.mydb.cursor()
 
+    @staticmethod
+    def duration(length):
+        minutes = length // 60
+        length %= 60
+        seconds = length
+        return minutes, seconds
 
     dj = SlashCommandGroup(
         "dj", "The commands about DJ Raijin"
@@ -149,17 +151,9 @@ class Music(discord.Cog):
         Ensure that the user is in a voice channel, start a song from the
         tracks folder and send a message to the user
         """
-        self.mydb.ping(reconnect=True)
-
         vc = ctx.voice_client
         ffmpeg_options = {'options': '-vn -loglevel quiet'}
 
-        lang = Fetch(self.bot).getLang(self, self.cursor, ctx.author.id, ctx.guild.id)
-
-        if lang == "Français":
-            langlist = self.fr_lang
-        else:
-            langlist = self.en_lang
         if ctx.author.voice:
             if not vc:
                 vc = await ctx.author.voice.channel.connect()
@@ -172,7 +166,7 @@ class Music(discord.Cog):
                 else:
                     choice = random.choice(os.listdir("res/tracks/"))
                     song = discord.FFmpegOpusAudio("res/tracks/" + choice, bitrate=64,
-                        **ffmpeg_options)
+                                                   **ffmpeg_options)
                     title = choice.replace(".mp3", "")
 
                     if not song:
@@ -181,15 +175,9 @@ class Music(discord.Cog):
                             please retry later", color=self.default_color)
                         await ctx.respond(embed=warning, ephemeral=True)
 
-                    def duration(length):
-                        mins = length // 60
-                        length %= 60
-                        seconds = length
-                        return mins, seconds
-
                     with audioread.audio_open(f"res/tracks/{choice}") as f:
                         total = f.duration
-                        mins, seconds = duration(int(total))
+                        minutes, seconds = self.duration(int(total))
 
                     mp3 = MP3(f"res/tracks/{choice}")
                     bitrate = mp3.info.bitrate / 1000
@@ -198,7 +186,7 @@ class Music(discord.Cog):
                     info = discord.Embed(
                         title=title,
                         description=f"・**Duration**: \
-                        `{mins}:{seconds}`" + f"\n・**Bitrate**: `{bitrate}` \
+                        `{minutes}:{seconds}`" + f"\n・**Bitrate**: `{bitrate}` \
                         Kbps\n・**Album**: Realm of Tranquil Eternity",
                         color=self.default_color
                     )
@@ -217,6 +205,7 @@ class Music(discord.Cog):
                 You need to join a Voice Channel before playing", color=self.default_color)
             await ctx.respond(embed=warning, ephemeral=True)
 
+    @staticmethod
     async def m_next(self, ctx):
         """
         Ensure that the user is in a voice channel, stop the song and change to
@@ -241,15 +230,9 @@ class Music(discord.Cog):
                         retry later", color=self.default_color)
                     await ctx.respond(embed=warning, ephemeral=True)
 
-                def duration(length):
-                    mins = length // 60
-                    length %= 60
-                    seconds = length
-                    return mins, seconds
-
                 with audioread.audio_open(f"res/tracks/{choice}") as f:
                     total = f.duration
-                    mins, seconds = duration(int(total))
+                    minutes, seconds = self.duration(int(total))
 
                 mp3 = MP3(f"res/tracks/{choice}")
                 bitrate = mp3.info.bitrate / 1000
@@ -258,7 +241,7 @@ class Music(discord.Cog):
                 info = discord.Embed(
                     title=title,
                     description=f"・**Duration**: \
-                    `{mins}:{seconds}`" + f"\n・**Bitrate**: `{bitrate}` \
+                    `{minutes}:{seconds}`" + f"\n・**Bitrate**: `{bitrate}` \
                     Kbps\n・**Album**: Realm of Tranquil Eternity",
                     color=self.default_color
                 )
@@ -277,6 +260,7 @@ class Music(discord.Cog):
                 You need to join a Voice Channel before playing", color=self.default_color)
             await ctx.respond(embed=warning, ephemeral=True)
 
+    @staticmethod
     async def m_stop(self, ctx):
         """
         Ensure that the user is in a voice channel, stop the song and
@@ -297,7 +281,8 @@ class Music(discord.Cog):
                 `/music play` to connect and start", color=self.default_color)
             await ctx.respond(embed=error, ephemeral=True)
 
-    async def m_pause(self, ctx):
+    @staticmethod
+    async def m_pause(ctx):
         """
         Ensure that the user is in a voice channel, pause the song
         if playing or play the song if paused
@@ -310,6 +295,7 @@ class Music(discord.Cog):
             else:
                 vc.resume()
 
+    @staticmethod
     async def m_shuffle(self, ctx):
         """
         Ensure that the user is in a voice channel and activate
@@ -325,8 +311,8 @@ class Music(discord.Cog):
                 if ctx.voice_client.is_playing():
                     vc.stop()
                 choice = random.choice(os.listdir("res/tracks/"))
-                song = discord.FFmpegOpusAudio("res/tracks/" \
-                    + choice, bitrate=64, **ffmpeg_options)
+                song = discord.FFmpegOpusAudio("res/tracks/"
+                                               + choice, bitrate=64, **ffmpeg_options)
                 title = choice.replace(".mp3", "")
 
                 if not song:
@@ -335,15 +321,9 @@ class Music(discord.Cog):
                         retry later", color=self.default_color)
                     await self.ctx.respond(embed=warning, ephemeral=True)
 
-                def duration(length):
-                    mins = length // 60
-                    length %= 60
-                    seconds = length
-                    return mins, seconds
-
                 with audioread.audio_open(f"tracks/{choice}") as f:
                     total = f.duration
-                    mins, seconds = duration(int(total))
+                    minutes, seconds = self.duration(int(total))
 
                 mp3 = MP3(f"res/tracks/{choice}")
                 bitrate = mp3.info.bitrate / 1000
@@ -352,7 +332,7 @@ class Music(discord.Cog):
                 info = discord.Embed(
                     title=title,
                     description=f"・**Duration**: \
-                    `{mins}:{seconds}`" + f"\n・**Bitrate**: `{bitrate}`\
+                    `{minutes}:{seconds}`" + f"\n・**Bitrate**: `{bitrate}`\
                     Kbps\n・**Album**: Realm of Tranquil Eternity",
                     color=self.default_color
                 )

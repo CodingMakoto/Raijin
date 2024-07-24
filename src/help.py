@@ -6,7 +6,6 @@ Commands:
     - help
 """
 
-
 import os
 import json
 import sys
@@ -30,17 +29,16 @@ class Help(discord.Cog):
         self.mydb = Fetch(bot).setInit()
         self.cursor = self.mydb.cursor()
 
-
     @discord.slash_command(name="help", description="⚡ Request Raiden Shogun Help")
     async def help(
-        self,
-        ctx,
-        command: Option(
-            str,
-            description="Get details about a specific command",
-            required = False,
-            default = None
-        )
+            self,
+            ctx,
+            command: Option(
+                str,
+                description="Get details about a specific command",
+                required=False,
+                default=None
+            )
     ):
         """
         Send a help menu with multiple choice/Send details about a specific command
@@ -50,41 +48,45 @@ class Help(discord.Cog):
         lang = Fetch(self.bot).getLang(self, self.cursor, ctx.author.id, ctx.guild.id)
 
         if lang == "Français":
-            list = self.fr_FR
+            langlist = self.fr_FR
         else:
-            list = self.en_EN
+            langlist = self.en_EN
         if command is not None:
-            if command in list['commands']:
+            if command in langlist['commands']:
                 element = discord.Embed(
-                    title=list['commands'][command]['title'],
-                    description=list['commands'][command]['details'],
+                    title=langlist['commands'][command]['title'],
+                    description=langlist['commands'][command]['details'],
                     color=self.default_color
                 )
                 await ctx.respond(embed=element)
                 return
             else:
                 error = discord.Embed(
-                    title=list['errors']['commands']['title'],
-                    description=list['errors']['commands']['details'],
+                    title=langlist['errors']['commands']['title'],
+                    description=langlist['errors']['commands']['details'],
                     color=0xFF0000
                 )
                 await ctx.respond(embed=error)
                 return
 
-        m_title = list['help']['title']
-        m_description = list['help']['description']
+        m_title = langlist['help']['title']
+        m_description = langlist['help']['description']
         m_category = Select(
             options=[
-                discord.SelectOption(label=list['help']['options']['story']['title'], value="H", \
-                    description=list['help']['options']['story']['description'], emoji="<:heizouimthebest:1081239099039547472>"),
-                discord.SelectOption(label=list['help']['options']['shops']['title'], value="S", \
-                    description=list['help']['options']['shops']['description'], emoji="<:ayatomilkteatime:1081241425846472704>"),
-                discord.SelectOption(label=list['help']['options']['quests']['title'], value="Q", \
-                    description=list['help']['options']['quests']['description'], emoji="<:paimonrelieved:1081240022423974008>"),
-                discord.SelectOption(label=list['help']['options']['personal']['title'], value="P", \
-                    description=list['help']['options']['personal']['description'], emoji="<:raidenbird:1080897824440455288>")
-                ],
-            placeholder=list['help']['selection'],
+                discord.SelectOption(label=langlist['help']['options']['story']['title'], value="H",
+                                     description=langlist['help']['options']['story']['description'],
+                                     emoji="<:heizouimthebest:1081239099039547472>"),
+                discord.SelectOption(label=langlist['help']['options']['shops']['title'], value="S",
+                                     description=langlist['help']['options']['shops']['description'],
+                                     emoji="<:ayatomilkteatime:1081241425846472704>"),
+                discord.SelectOption(label=langlist['help']['options']['quests']['title'], value="Q",
+                                     description=langlist['help']['options']['quests']['description'],
+                                     emoji="<:paimonrelieved:1081240022423974008>"),
+                discord.SelectOption(label=langlist['help']['options']['personal']['title'], value="P",
+                                     description=langlist['help']['options']['personal']['description'],
+                                     emoji="<:raidenbird:1080897824440455288>")
+            ],
+            placeholder=langlist['help']['selection'],
             min_values=1,
             max_values=1
         )
@@ -100,8 +102,8 @@ class Help(discord.Cog):
             selected_value = interaction.data["values"][0]
             if selected_value == "H":
                 story = discord.Embed(
-                    title=list['help']['callback']['title'],
-                    description=list['help']['callback']['description'],
+                    title=langlist['help']['callback']['title'],
+                    description=langlist['help']['callback']['description'],
                     color=self.default_color
                 )
                 await interaction.response.send_message(embed=story)
@@ -112,6 +114,5 @@ class Help(discord.Cog):
         await ctx.respond(embed=menu, file=file, view=m_view, ephemeral=True)
 
 
-
 def setup(bot):
-     bot.add_cog(Help(bot))
+    bot.add_cog(Help(bot))
