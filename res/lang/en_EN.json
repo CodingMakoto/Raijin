@@ -1,0 +1,17 @@
+{
+  "welcome": "So... you want to start a new adventure with me ?\n\n> ・ Raijin Discord Bot is an Unofficial Genshin Impact Discord Bot using ONLY Slash Commands\n> ・ I can start the adventure for you with `account start`\n> ・ To end the adventure with me use `/account end`\n> ・ When your account is created use `/story mode` and enjoy the adventure <:raidenangry:1080897820854329376>\n> ・ During your adventure you can fight bosses, recover your health with Archons Statues, fight hilichurls, discover daily quests and more...\n> ・ I let you discover that by yourself using `/help` <:raidenlaugh:1080898399336931429>\n> ・ You have more questions ? Well then I let you enter in [Raijin City](https://discord.gg/2AePNcphrs) ⚡\n\n<:beta:1233039955631276172> **Warning**: Currently in **BETA** version, some commands may not work as expected",
+  "account": {
+    "creation": {
+      "existing": "<:raidenangry:1080897820854329376> Your account is already open, to reset it use : `/account end`",
+      "created": "<:raidenlaugh:1080898399336931429> Your account has been created successfully {user}, now you can start your adventure using : `/story mode`",
+      "wrong_uid": "<:raidenangry:1080897820854329376> The UID doesn't seem to be correct, UID is the 9-digit number of your in-game account"
+    },
+    "deletion": {
+      "deleted": "<:raidenlaugh:1080898399336931429> Your account has been deleted successfully {user}",
+      "cancelled": "Account deletion cancelled {user}",
+      "confirmation": "Are you sure you want to delete your account? {user}",
+      "no_button": "No, bring me back",
+      "yes_button": "Yes"
+    }
+  }
+}

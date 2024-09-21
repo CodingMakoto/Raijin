@@ -1,0 +1,16 @@
+{
+  "account": {
+    "creation": {
+      "existing": "<:raidenangry:1080897820854329376> Votre compte est déjà ouvert, pour le réinitialiser utilisez : `/account end`",
+      "created": "<:raidenlaugh:1080898399336931429> Votre compte a été créé avec succès {user}, vous pouvez maintenant commencer votre aventure en utilisant : `/story mode`",
+      "wrong_uid": "<:raidenangry:1080897820854329376> L’UID ne semble pas correct, l’UID est le numéro à 9 chiffres de votre compte dans le jeu"
+    },
+    "deletion": {
+      "deleted": "<:raidenlaugh:1080898399336931429> Votre compte a été supprimé avec succès {user}",
+      "cancelled": "Suppression du compte annulée {user}",
+      "confirmation": "Êtes-vous sûr de vouloir supprimer votre compte ? {user}",
+      "no_button": "Non, ramène-moi à la vie",
+      "yes_button": "Oui"
+    }
+  }
+}
