@@ -9,7 +9,7 @@
   <h3 align="center">Raijin Discord Bot</h3>
 
   <p align="center">
-    Have you ever wanted to live an New Inazuma Adventure on Discord ?
+    Have you ever wanted to live an New Adventure on Discord ?
     <br />
     An Unofficial Genshin Impact Discord Bot by Makoto#7116
     <br />
@@ -40,9 +40,7 @@ So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on 
 
 ## Good to know
 
-⚠️ **STILL IN DEVELOPMENT, NOT FINISHED YET**
-
-⚠️ Stable version are only RELEASES files and not those of the main branch
+⚠️ **Constantly developing**
 
 ⚠️ DISCLAIMER : I'm a Student Developer that create this by himself. My code work but can be very different from many advanced bots
 
