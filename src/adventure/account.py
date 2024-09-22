@@ -56,6 +56,10 @@ class Account(discord.Cog):
         "account", "Everything about your Account"
     )
 
+    story = SlashCommandGroup(
+        "story", "Your adventure with Raiden Shogun"
+    )
+
     @account.command(name="start", description="🔍 Ready for a new adventure ?")
     async def start(
         self,
@@ -72,13 +76,13 @@ class Account(discord.Cog):
         self.mydb.ping(reconnect=True)
 
         self.cursor.execute(f"SELECT `LANG` FROM `Account` WHERE `ID` = '{ctx.author.id}' AND `GUILD` = '{ctx.guild.id}'")
-        account_exist = self.cursor.fetchone()
+        fetched_account = self.cursor.fetchone()
 
         name = nickname or ctx.author.name
         uid = uid or "0"
         uid_valid = (uid != "0" and len(uid) == 9 and uid.isnumeric()) or uid == "0"
 
-        if account_exist is not None:
+        if fetched_account is not None:
             self.cursor.execute(f"SELECT `LANG` FROM `Account` WHERE `ID` = '{ctx.author.id}' AND `GUILD` = '{ctx.guild.id}'")
             lang = self.cursor.fetchone()[0]
             lang_list = self.fr_lang if lang == "Français" else self.en_lang
@@ -105,9 +109,12 @@ class Account(discord.Cog):
         self.mydb.ping(reconnect=True)
 
         self.cursor.execute(f"SELECT `LANG` FROM `Account` WHERE `ID` = '{ctx.author.id}' AND `GUILD` = '{ctx.guild.id}'")
-        account_exist = self.cursor.fetchone()
+        fetched_account = self.cursor.fetchone()
 
-        if account_exist is not None:
+        self.cursor.execute(f"SELECT `CHAPTER` FROM `Story` WHERE `ID` = '{ctx.author.id}' AND `GUILD` = '{ctx.guild.id}'")
+        story_progress = self.cursor.fetchone()
+
+        if fetched_account is not None:
             self.cursor.execute(f"SELECT `LANG` FROM `Account` WHERE `ID` = '{ctx.author.id}' AND `GUILD` = '{ctx.guild.id}'")
             lang = self.cursor.fetchone()[0]
             lang_list = self.fr_lang if lang == "Français" else self.en_lang
@@ -116,6 +123,9 @@ class Account(discord.Cog):
                 delete = discord.Embed(description=lang_list['account']['deletion']['deleted'].format(user=ctx.author.mention), color=self.default_color)
                 self.cursor.execute(f"DELETE FROM `Account` WHERE `ID` = '{ctx.author.id}' AND `GUILD` = '{ctx.guild.id}'")
                 self.mydb.commit()
+                if story_progress is not None:
+                    self.cursor.execute(f"DELETE FROM `Story` WHERE `ID` = '{ctx.author.id}' AND `GUILD` = '{ctx.guild.id}'")
+                    self.mydb.commit()
                 await interaction.response.send_message(embed=delete, ephemeral=True)
 
             async def no_callback(interaction):
