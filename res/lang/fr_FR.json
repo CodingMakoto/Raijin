@@ -12,5 +12,22 @@
       "no_button": "Non, ramène-moi à la vie",
       "yes_button": "Oui"
     }
+  },
+  "help": {
+    "title": "Alors... vous avez demandé l’aide de Raijin ?",
+    "description": "Sélectionnez une catégorie en dessous qui peut vous aider <:raidenbird:1080897824440455288>\n\n**Commande spécifique**\nVous avez besoin d’aide avec une commande spécifique ? Visiter la [Documentation de Raijin](https://docs.codingmakoto.dev/) pour obtenir plus de détails sur comment l'utiliser\n\n**Liens utiles**\n • ⚡ [Raijin City](https://discord.gg/2AePNcphrs)\n • <:github:1233415410641272903> [Raijin Github](https://github.com/CodingMakoto/Raijin)",
+    "selection": "Sélectionnez une catégorie...",
+    "callback": {
+      "account": {
+        "title": "<:raidencards:1287740296662220931> Besoin d’aide dans votre aventure ?",
+        "description": "Voici les commandes liées à votre profil dans votre aventure. Toutes ces commandes sont expliquées sur la [Documentation de Raijin](https://docs.codingmakoto.dev/)\n\n**Commandes**\n> /account start\n> /account end"
+      }
+    },
+    "options": {
+      "account": {
+        "title": "Profil",
+        "description": "Votre nouveau voyage avec Makoto"
+      }
+    }
   }
 }
