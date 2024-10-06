@@ -13,7 +13,7 @@
     <br />
     An Unofficial Genshin Impact Discord Bot by Makoto#7116
     <br />
-    <a href="https://docs.codingmakoto.dev/"><strong>Documentation</strong></a><a href="https://discord.gg/2AePNcphrs"><strong>Discord Server</strong></a>
+    <a href="https://docs.codingmakoto.dev/"><strong>Documentation</strong></a> ・ <a href="https://discord.gg/2AePNcphrs"><strong>Discord Server</strong></a>
     <br />
     <br />
   </p>
