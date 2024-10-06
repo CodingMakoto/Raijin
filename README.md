@@ -13,7 +13,7 @@
     <br />
     An Unofficial Genshin Impact Discord Bot by Makoto#7116
     <br />
-    <!--<a href="https://raidenshogun.gitbook.io/docs"><strong>Documentation</strong></a>--><a href="https://discord.gg/2AePNcphrs"><strong>Discord Server</strong></a>
+    <a href="https://docs.codingmakoto.dev/"><strong>Documentation</strong></a><a href="https://discord.gg/2AePNcphrs"><strong>Discord Server</strong></a>
     <br />
     <br />
   </p>
@@ -30,10 +30,6 @@ So... Hello ! I'm Raijin Discord Bot ! My goal was to create a New Adventure on 
 - Heal yourself by using statues of the seven
 - Meet bosses and fight them
 - Collect materials and earn characters to be more powerful in battle !
-
-<p align="center">
-  <img src="res/images/story/1-english.jpg"/>
-</p>
 
 
 
