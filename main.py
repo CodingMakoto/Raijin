@@ -87,6 +87,7 @@ async def on_ready():
 
 
 bot.load_extension("src.adventure.account")
+bot.load_extension("src.help")
 
 
 bot.run(raijin_token)
