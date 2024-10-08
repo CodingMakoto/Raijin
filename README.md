@@ -77,3 +77,6 @@ Also you can post your issue if you have one on this repository issue page.
 
 [MySQL]: https://img.shields.io/badge/MySQL-005B75?style=for-the-badge&logo=mysql&logoColor=F3A01F
 [MySQL-url]: https://www.mysql.com/
+
+
+**DISCLAIMER**: This bot is provided as-is, without any guarantees or warranties. The author is not responsible for any misuse or damage caused by using this bot. Users must comply with the platform's terms of service (e.g., Discord's TOS) and applicable laws when running this bot.
