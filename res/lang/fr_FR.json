@@ -1,9 +1,9 @@
 {
   "account": {
     "creation": {
-      "existing": "<:raidenangry:1080897820854329376> Votre compte est déjà ouvert, pour le réinitialiser utilisez : `/account end`",
-      "created": "<:raidenlaugh:1080898399336931429> Votre compte a été créé avec succès {user}, vous pouvez maintenant commencer votre aventure en utilisant : `/story mode`",
-      "wrong_uid": "<:raidenangry:1080897820854329376> L’UID ne semble pas correct, l’UID est le numéro à 9 chiffres de votre compte dans le jeu"
+      "existing": "<:raidenannoyed:1287740293386469396> Votre compte est déjà ouvert, pour le réinitialiser utilisez : `/account end`",
+      "created": "<:raidenlaugh:1080898399336931429> **Votre compte a été créé avec succès** {user}\nVous pouvez maintenant commencer votre aventure et explorer les différentes commandes de Raijin. Le mode histoire est une narration évolutive qui rendra votre aventure unique grâce à vos choix et à des ajouts de contenu réguliers\nSi vous avez besoin d'aide utilisez : `/help`",
+      "wrong_uid": "<:raidenannoyed:1287740293386469396> L’UID ne semble pas correct, l’UID est le numéro à 9 chiffres de votre compte dans le jeu"
     },
     "deletion": {
       "deleted": "<:raidenlaugh:1080898399336931429> Votre compte a été supprimé avec succès {user}",
@@ -20,13 +20,48 @@
     "callback": {
       "account": {
         "title": "<:raidencards:1287740296662220931> Besoin d’aide dans votre aventure ?",
-        "description": "Voici les commandes liées à votre profil dans votre aventure. Toutes ces commandes sont expliquées sur la [Documentation de Raijin](https://docs.codingmakoto.dev/)\n\n**Commandes**\n> /account start\n> /account end"
+        "description": "Voici les commandes liées à votre compte dans votre aventure, elles vous permettent de gérer votre aventure comme vous le souhaitez. Toutes ces commandes sont expliquées sur la [Documentation de Raijin](https://docs.codingmakoto.dev/)\n\n**Commandes**\n> /account start\n> /account end"
+      },
+      "profile": {
+        "title": "<:raidenfight:1189307569739661312> Besoin d’aide avec votre profil ?",
+        "description": "Voici les commandes liées à votre profil dans votre aventure, elles vous permettent de voir comment votre aventure évolue avec Raijin, comme dans Genshin Impact. Toutes ces commandes sont expliquées sur la [Documentation de Raijin](https://docs.codingmakoto.dev/)\n\n**Commandes**\n> /profile in-game\n> /profile uid"
       }
     },
     "options": {
       "account": {
+        "title": "Compte",
+        "description": "Gérez votre nouveau voyage avec Makoto"
+      },
+      "profile": {
         "title": "Profil",
-        "description": "Votre nouveau voyage avec Makoto"
+        "description": "Suivez votre aventure avec Raijin et Genshin Impact"
+      }
+    }
+  },
+  "profile": {
+    "api_failed": "<:raidenwhat:1287740294866927658> Raijin n'arrive pas à récupérer vos informations, regardez les informations disponibles sur la [Page de Status de Raijin](https://raijin.statuspage.io/) ou réessayez plus tard",
+    "in-game": {
+      "title": "Profil de {user}",
+      "adventure_level": "<:raidencards:1287740296662220931> Niveau d'aventure",
+      "signature": "\n<:raidenbird:1080897824440455288> Signature",
+      "world_level": "\n<:statues:1149295942030344192> Niveau du monde",
+      "spiral_abyss": "\n<:spiralabyss:1309634810616217682> Profondeurs spiralées",
+      "achievements": "\n<:achievements:1309635247528218634> Succès",
+      "imaginarium_theater": "\n<:imaginarium:1309641983324852364> Acte du théâtre de l'imaginarium"
+    },
+    "account": {
+      "uid": {
+        "saved": "<:raidenbird:1080897824440455288> Votre UID a été enregistré avec succès",
+        "invalid": "<:raidenannoyed:1287740293386469396> L'UID ne semble pas être valide. Il s'agit du numéro à 9 ou 10 chiffres de votre compte en jeu",
+        "removed": "<:raidenbird:1080897824440455288> Votre UID a été supprimé avec succès"
+      },
+      "not_existing": {
+        "member": "{user} n'a pas de compte avec Raijin <:raidenannoyed:1287740293386469396>",
+        "author": "<:raidenannoyed:1287740293386469396> Vous n'avez pas de compte, utilisez `/account start` pour en créer un"
+      },
+      "uid_not_existing": {
+        "member": "{user} n'a pas d'UID enregistré avec Raijin <:raidenannoyed:1287740293386469396>",
+        "author": "<:raidenannoyed:1287740293386469396> Vous n'avez pas d'UID enregistré, utilisez `/profile uid` pour en enregistrer un"
       }
     }
   }

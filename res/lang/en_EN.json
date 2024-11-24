@@ -1,10 +1,24 @@
 {
-  "welcome": "So... you want to start a new adventure with me ?\n\n> ・ Raijin Discord Bot is an Unofficial Genshin Impact Discord Bot using ONLY Slash Commands\n> ・ I can start the adventure for you with `account start`\n> ・ To end the adventure with me use `/account end`\n> ・ When your account is created use `/story mode` and enjoy the adventure <:raidenangry:1080897820854329376>\n> ・ During your adventure you can fight bosses, recover your health with Archons Statues, fight hilichurls, discover daily quests and more...\n> ・ I let you discover that by yourself using `/help` <:raidenlaugh:1080898399336931429>\n> ・ You have more questions ? Well then I let you enter in [Raijin City](https://discord.gg/2AePNcphrs) ⚡\n\n<:beta:1233039955631276172> **Warning**: Currently in **BETA** version, some commands may not work as expected",
+  "guild": {
+    "welcome": {
+      "title": "<:raidenbird:1080897824440455288> Raijin Discord Bot",
+      "details": "So... you want to start a new adventure with me ?\n\n> ・ Raijin Discord Bot is an Unofficial Genshin Impact Discord Bot using ONLY Slash Commands\n> ・ I can start the adventure for you with `/account start`\n> ・ To end the adventure with me use `/account end`\n> ・ When your account is created use `/story mode` and enjoy the adventure <:raidenannoyed:1287740293386469396>\n> ・ During your adventure you can fight bosses, recover your health with Archons Statues, fight hilichurls, discover daily quests and more...\n> ・ I let you discover that by yourself using `/help` <:raidenlaugh:1080898399336931429>\n> ・ You have more questions ? Well then I let you enter in [Raijin City](https://discord.gg/2AePNcphrs) ⚡\n\n<:beta:1233039955631276172> **Warning**: Currently in **BETA** version, some commands may not work as expected"
+    }
+  },
+  "errors": {
+    "account": {
+      "details": "<:raidenannoyed:1287740293386469396> You do not have an account, use `/account start` to create one"
+    },
+    "commands": {
+      "title": "Error with the command",
+      "details": "Please retry later <:raidencry:1189307566606520501>\nLook at [Raijin Status Page](https://raijin.statuspage.io/) to check if an event related to an error or a maintenance is in progress"
+    }
+  },
   "account": {
     "creation": {
-      "existing": "<:raidenangry:1080897820854329376> Your account is already open, to reset it use : `/account end`",
-      "created": "<:raidenlaugh:1080898399336931429> Your account has been created successfully {user}, now you can start your adventure using : `/story mode`",
-      "wrong_uid": "<:raidenangry:1080897820854329376> The UID doesn't seem to be correct, UID is the 9-digit number of your in-game account"
+      "existing": "<:raidenannoyed:1287740293386469396> Your account is already open, to reset it use : `/account end`",
+      "created": "<:raidenlaugh:1080898399336931429> **Your account has been successfully created** {user}\nYou can now start your adventure and explore the different commands of Raijin. Story mode is a scalable storytelling that will make your adventure unique through your choices and regular content additions\nIf you need help use : `/help`",
+      "wrong_uid": "<:raidenannoyed:1287740293386469396> The UID doesn't seem to be correct, UID is the 9-digit number of your in-game account"
     },
     "deletion": {
       "deleted": "<:raidenlaugh:1080898399336931429> Your account has been deleted successfully {user}",
@@ -21,13 +35,48 @@
     "callback": {
       "account": {
         "title": "<:raidencards:1287740296662220931> Need some help in your adventure ?",
-        "description": "These are the commands related to your profile in your adventure, all of which are explained on the [Raijin Documentation](https://docs.codingmakoto.dev/)\n\n**Commands**\n> /account start\n> /account end"
+        "description": "These are the commands related to your profile in your adventure, they allow you to manage your adventure as you wish. All these commands are explained on the [Raijin Documentation](https://docs.codingmakoto.dev/)\n\n**Commands**\n> /account start\n> /account end"
+      },
+      "profile": {
+        "title": "<:raidenfight:1189307569739661312> Need some help with your profile ?",
+        "description": "Here are the commands related to your profile in your adventure, they allow you to see how your adventure evolves with Raijin, as in Genshin Impact. All these commands are explained on the [Raijin Documentation](https://docs.codingmakoto.dev/)\n\n**Commands**\n> /profile in-game\n> /profile uid"
       }
     },
     "options": {
       "account": {
         "title": "Account",
-        "description": "Your new journey with Makoto"
+        "description": "Manage your new trip with Makoto"
+      },
+      "profile": {
+        "title": "Profile",
+        "description": "Follow your adventure with Raijin and Genshin Impact"
+      }
+    }
+  },
+  "profile": {
+    "api_failed": "<:raidenwhat:1287740294866927658> Raijin is unable to retrieve your information, please check the available information on [Raijin Status Page](https://raijin.statuspage.io/) or try again later",
+    "in-game": {
+      "title": "{user}'s Profile",
+      "adventure_level": "<:raidencards:1287740296662220931> Adventure Level",
+      "signature": "\n<:raidenbird:1080897824440455288> Signature",
+      "world_level": "\n<:statues:1149295942030344192> World Level",
+      "spiral_abyss": "\n<:spiralabyss:1309634810616217682> Spiral Abyss",
+      "achievements": "\n<:achievements:1309635247528218634> Achievements",
+      "imaginarium_theater": "\n<:imaginarium:1309641983324852364> Imaginarium Theater Act"
+    },
+    "account": {
+      "uid": {
+        "saved": "<:raidenbird:1080897824440455288> Your UID has been saved successfully",
+        "invalid": "<:raidenannoyed:1287740293386469396> The UID does not appear to be valid. This is the 9 or 10 digit number of your in-game account",
+        "removed": "<:raidenbird:1080897824440455288> Your UID has been removed successfully"
+      },
+      "not_existing": {
+        "member": "{user} does not have an account with Raijin <:raidenannoyed:1287740293386469396>",
+        "author": "<:raidenannoyed:1287740293386469396> You do not have an account, use `/account start` to create one"
+      },
+      "uid_not_existing": {
+        "member": "{user} has no registered UID with Raijin <:raidenannoyed:1287740293386469396>",
+        "author": "<:raidenannoyed:1287740293386469396> You do not have a saved UID, use `/profile uid` to save one"
       }
     }
   }
