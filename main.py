@@ -12,6 +12,7 @@ Events:
 import time
 import json
 import os
+import random
 
 from dotenv import load_dotenv
 import discord
@@ -69,10 +70,26 @@ async def on_ready():
     try:
         db = Database()
         conn = db.connect()
-        await bot.change_presence(activity=discord.Game(name="Plane of Euthymia"))
-        print("Ei is Ready")
+        genshin_music = [
+            "Nothing but Trickery",
+            "Fontaine",
+            "Duel in the Mist",
+            "Rapid as Wildfires",
+            "Surasthana Fantasia",
+            "Graceful Dexterity",
+            "Swirls of the Stream",
+            "Dance of Sabzeruz",
+            "Chasing the Wind",
+            "Faraway Solicitude",
+        ]
+        await bot.change_presence(
+            activity=discord.Activity(
+                type=discord.ActivityType.listening, name=random.choice(genshin_music)
+            )
+        )
+        print("Raijin is Ready")
     except mysql.connector.Error:
-        print("Ei cannot connect to the database")
+        print("Raijin cannot connect to the database")
         raise
     finally:
         if conn and conn.is_connected():
