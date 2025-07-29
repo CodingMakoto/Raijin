@@ -15,6 +15,7 @@ import os
 
 from dotenv import load_dotenv
 import discord
+from discord.ext import commands
 import mysql.connector
 
 from config.env import Database
@@ -24,8 +25,8 @@ load_dotenv()
 raijin_token = os.getenv("BOT_TOKEN")
 intents = discord.Intents.all()
 bot = discord.Bot(intents=intents)
-DEFAULT_COLOR = 0x37266a
-ERROR_COLOR = 0xff0000
+DEFAULT_COLOR = 0x37266A
+ERROR_COLOR = 0xFF0000
 
 
 @bot.event
@@ -33,7 +34,7 @@ async def on_guild_join(guild):
     """
     Send a message when Raijin is joining a guild
     """
-    file = discord.File("res/images/avatar-wb.png", filename="avatar.png")
+    file = discord.File("res/images/raijin/avatar.png", filename="avatar.png")
     en_file = open("res/lang/en_EN.json", encoding="utf-8")
     messages = json.load(en_file)
     welcoming = discord.Embed(
@@ -54,7 +55,7 @@ async def on_guild_join(guild):
 @bot.event
 async def on_connect():
     """
-    Register new commands and sync modified commands with the API
+    Sync the commands when the bot is connected
     """
     await bot.sync_commands()
 
@@ -68,9 +69,10 @@ async def on_ready():
     try:
         db = Database()
         conn = db.connect()
-        print("Raijin is Ready")
+        await bot.change_presence(activity=discord.Game(name="Plane of Euthymia"))
+        print("Ei is Ready")
     except mysql.connector.Error:
-        print("Raijin cannot connect to the database")
+        print("Ei cannot connect to the database")
         raise
     finally:
         if conn and conn.is_connected():
@@ -84,6 +86,13 @@ async def on_application_command_error(
     """
     Send a message when an error appear on command call
     """
+    if not isinstance(error, commands.CommandOnCooldown):
+        owner = await bot.fetch_user(577176157040934922)
+        errors_message = discord.Embed(
+            description=f"**An error occured with Ei** : `{error}`", color=ERROR_COLOR
+        )
+        await owner.send(embed=errors_message)
+
     if isinstance(error, (discord.ApplicationCommandError, mysql.connector.Error)):
         with open("res/lang/en_EN.json", encoding="utf-8") as en_file:
             messages = json.load(en_file)
@@ -98,10 +107,22 @@ async def on_application_command_error(
         errors.set_footer(text=f"Detected at {current_time} UTC")
         await ctx.respond(embed=errors, ephemeral=True)
 
+    if isinstance(error, commands.CommandOnCooldown):
+        with open("res/lang/en_EN.json", encoding="utf-8") as en_file:
+            messages = json.load(en_file)
 
-bot.load_extension("src.adventure.account")
+        cooldown = round(error.retry_after)
+        errors = discord.Embed(
+            description=messages["errors"]["cooldown"].format(remaining_time=cooldown),
+            color=ERROR_COLOR,
+        )
+        await ctx.respond(embed=errors, ephemeral=True)
+
+
+bot.load_extension("src.account")
 bot.load_extension("src.help")
-bot.load_extension("src.profile")
-
+bot.load_extension("src.adventure.profile")
+bot.load_extension("src.adventure.quests")
+bot.load_extension("src.adventure.astral")
 
 bot.run(raijin_token)

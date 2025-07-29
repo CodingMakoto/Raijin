@@ -1,8 +1,12 @@
 {
+  "cooldowns": {
+    "daily": "<:raidencards:1287740296662220931> Vous ne pouvez pas utiliser cette commande maintenant, revenez",
+    "bosses": "<:raidenleaving:1189307571237044297> Vos forces sont épuisées après le dernier combat, revenez"
+  },
   "account": {
     "creation": {
       "existing": "<:raidenannoyed:1287740293386469396> Votre compte est déjà ouvert, pour le réinitialiser utilisez : `/account end`",
-      "created": "<:raidenlaugh:1080898399336931429> **Votre compte a été créé avec succès** {user}\nVous pouvez maintenant commencer votre aventure et explorer les différentes commandes de Raijin. Le mode histoire est une narration évolutive qui rendra votre aventure unique grâce à vos choix et à des ajouts de contenu réguliers\nSi vous avez besoin d'aide utilisez : `/help`",
+      "created": "<:raidenlaugh:1080898399336931429> **Votre compte est prêt**\nVous pouvez maintenant commencer votre aventure et explorer les différentes commandes de Raijin. Le mode histoire est une narration évolutive qui rendra votre aventure unique grâce à vos choix et à des ajouts de contenu réguliers\nSi vous avez besoin d'aide utilisez : `/help`",
       "wrong_uid": "<:raidenannoyed:1287740293386469396> L’UID ne semble pas correct, l’UID est le numéro à 9 chiffres de votre compte dans le jeu"
     },
     "deletion": {
@@ -11,6 +15,39 @@
       "confirmation": "Êtes-vous sûr de vouloir supprimer votre compte ? {user}",
       "no_button": "Non, ramène-moi à la vie",
       "yes_button": "Oui"
+    }
+  },
+  "astral": {
+    "title": "<:raidenwhat:1287740294866927658> Atlas Astral",
+    "description": "L'Atlas Astral est un guide qui vous aidera à explorer l'île d'Astralia, il contient des informations sur les monstres, les monnaies, les objets et les personnages que vous pourrez rencontrer sur votre chemin\n\nPour commencer, utilisez cette commande avec l'option `request` puis choisissez une catégorie dans le menu déroulant",
+    "selection": "Explorez un élément en détails...",
+    "astralia": {
+      "title": "<:raidenwhat:1287740294866927658> Astralia",
+      "description": "Astralia est une île vaste et mystérieuse. À votre arrivée, la résonance astrale vous submerge et vous plonge dans un flashback de la vie sur cette île. Autrefois, une catastrophe a décimé ses habitants. La Fondation Astrale avait créé un catalyseur pour préserver la vie et la nature de l'île, mais celui-ci a été détruit en même temps que les habitants lors d’un événement inconnu. Aujourd’hui, vous découvrez l’île : à vous d’en explorer les secrets et les mystères. Mais prenez garde : Astralia est dangereuse ; il vous faudra relever de nombreux défis pour survivre et percer la vérité sur cette île.\n\nVous pouvez en découvrir plus ici : [Documentation de Raijin](https://docs.codingmakoto.dev/astralia)"
+    },
+    "bestiary": {
+      "title": "Voici la liste des monstres que vous pourrez rencontrer sur l'île d'Astralia <:raidencards:1287740296662220931>\n> Mosshide\n> Mystralith",
+      "monsters": {
+        "mosshide": {
+          "label": "Mosshide",
+          "description": "Le Mosshide est aussi long qu’un navire, sa silhouette reptilienne surgit des flots dans un bond immense, dévoilant une gueule pleine de crocs.\nIl possède une capacité unique : il peut invoquer des vortex puissants, créant des tourbillons qui happent ses proies ou repoussent ses agresseurs\n\n**Méthode(s) de découverte** : En explorant la plage de Luminara\n**Commande(s) associées(s)** : `/quests bosses`"
+        },
+        "mystralith": {
+          "label": "Mystralith",
+          "description": "Le Mystralith est une créature majestueuse, mi-dragon mi-serpent, qui se distingue par son corps allongé couvert d’écailles sombres et ses ailes puissantes semblables à celles d’un dragon.\nIl possède une capacité unique : Il peut chasser les intrus de son territoire en agitant sa queue, créant des tourbillons\n\n**Méthode(s) de découverte** : En explorant la forêt Verdant\n**Commande(s) associées(s)** : `/quests bosses`"
+        }
+      }
+    },
+    "currency": {
+      "title": "Voici la liste des monnaies disponibles sur l'île d'Astralia <:raidencards:1287740296662220931>\n> Pièces Astral\n> Échos Astral",
+      "astralcoin": {
+        "label": "Pièces Astral",
+        "description": "Les pièces Astral permettent d’acheter de l’équipement et des objets utiles au cours de votre aventure. Elles ont moins de valeur que les Échos Astral et permettent donc d’acquérir des objets de moindre valeur.\n\n**Méthode(s) de découverte** : Sanctuaire Astral, Quêtes\n**Commande(s) associée(s)** : `/quests bosses`, `/quests daily`, `/astral sanctuary`, `/astral profile`"
+      },
+      "astralecho": {
+        "label": "Échos Astral",
+        "description": "Les Échos Astral permettent d’acheter de l’équipement et des objets de grande valeur, très utiles dans votre aventure. Leur obtention est bien plus difficile que celle des pièces Astral. On raconte que ces Échos proviennent des météorites de diamant d’autrefois.\n\n**Méthode(s) de découverte** : Sanctuaire Astral, Quêtes\n**Commande(s) associée(s)** : `/quests bosses`, `/quests daily`, `/astral sanctuary`, `/astral profile`"
+      }
     }
   },
   "help": {
@@ -24,7 +61,15 @@
       },
       "profile": {
         "title": "<:raidenfight:1189307569739661312> Besoin d’aide avec votre profil ?",
-        "description": "Voici les commandes liées à votre profil dans votre aventure, elles vous permettent de voir comment votre aventure évolue avec Raijin, comme dans Genshin Impact. Toutes ces commandes sont expliquées sur la [Documentation de Raijin](https://docs.codingmakoto.dev/)\n\n**Commandes**\n> /profile in-game\n> /profile uid"
+        "description": "Voici les commandes liées à votre profil dans votre aventure, elles vous permettent de voir comment votre aventure évolue avec Raijin, comme dans Genshin Impact. Toutes ces commandes sont expliquées sur la [Documentation de Raijin](https://docs.codingmakoto.dev/)\n\n**Commandes**\n> /profile astral\n> /profile in-game\n> /profile uid"
+      },
+      "quests": {
+        "title": "<:raidenbird:1080897824440455288> Besoin d’aide avec les quêtes ?",
+        "description": "Voici les commandes liées aux quêtes dans votre aventure. Elles vous permettent d’accomplir des quêtes pouvant vous rapporter des récompenses. Certaines commandes ne sont accessibles qu’à partir d’un certain niveau d’exploration. Toutes ces commandes sont expliquées dans la [Documentation de Raijin](https://docs.codingmakoto.dev/)\n\n**Commandes**\n> /quests bosses\n> /quests daily"
+      },
+      "astral": {
+        "title": "<:raidenwhat:1287740294866927658> Besoin d’aide avec votre résonnance Astral ?",
+        "description": "Voici les commandes liées à votre résonnance Astral dans votre aventure. Elles vous permettent de découvrir les différentes créatures, monnaies et différents personnages que vous pourrez rencontrer sur votre chemin. Toutes ces commandes sont expliquées dans la [Documentation de Raijin](https://docs.codingmakoto.dev/)\n\n**Commandes**\n> /astral atlas"
       }
     },
     "options": {
@@ -35,11 +80,19 @@
       "profile": {
         "title": "Profil",
         "description": "Suivez votre aventure avec Raijin et Genshin Impact"
+      },
+      "quests": {
+        "title": "Quêtes",
+        "description": "Accomplissez des quêtes pour gagner des récompenses"
+      },
+      "astral": {
+        "title": "Astral",
+        "description": "Découvrez ce qui vous entoure dans votre aventure"
       }
     }
   },
   "profile": {
-    "api_failed": "<:raidenwhat:1287740294866927658> Raijin n'arrive pas à récupérer vos informations, regardez les informations disponibles sur la [Page de Status de Raijin](https://raijin.statuspage.io/) ou réessayez plus tard",
+    "api_failed": "<:raidenwhat:1287740294866927658> Raijin n'arrive pas à récupérer vos informations, vérifiez votre UID, regardez les informations disponibles sur la [Page de Status de Raijin](https://raijin.statuspage.io/) ou réessayez plus tard",
     "in-game": {
       "title": "Profil de {user}",
       "adventure_level": "<:raidencards:1287740296662220931> Niveau d'aventure",
@@ -57,12 +110,74 @@
       },
       "not_existing": {
         "member": "{user} n'a pas de compte avec Raijin <:raidenannoyed:1287740293386469396>",
-        "author": "<:raidenannoyed:1287740293386469396> Vous n'avez pas de compte, utilisez `/account start` pour en créer un"
+        "author": "<:raidenannoyed:1287740293386469396> Vous n'avez pas de compte, utilisez `/account start` pour en créer un puis `/profile uid` pour enregistrer votre UID"
       },
       "uid_not_existing": {
         "member": "{user} n'a pas d'UID enregistré avec Raijin <:raidenannoyed:1287740293386469396>",
         "author": "<:raidenannoyed:1287740293386469396> Vous n'avez pas d'UID enregistré, utilisez `/profile uid` pour en enregistrer un"
       }
+    },
+    "astral": {
+      "title": "Profil Astral de {user}",
+      "description": "Voici les informations concernant votre aventure avec Raijin.\nElles évoluent au fil de vos quêtes et de la progression de votre histoire.\n\n<:raidenfight:1189307569739661312> **Niveau d’exploration** : `{chapter}`\n<:astralcoin:1317503233249378334> **Pièces Astral** : `{coins}`\n<:astralecho:1317495053479972894> **Échos Astral** : `{echos}`\n<:raidenleaving:1189307571237044297> **Boss vaincus** : `{bosses}`\n<:raidenannoyed:1287740293386469396> **Niveau de vie** : `{health}hp`\n<:astralstatue:1317512134824824844> **Statues rencontrées** : `{statues}`"
+    }
+  },
+  "chapters": {
+    "0": "Tu vas approcher du début de ton aventure mais avant tu dois savoir que tu doit utiliser les boutons en dessous pour sélectionner la suite de l’histoire ! Chaque chapitre de cette aventure est illustré par l'image ci-dessous, bonne chance, je crois en toi <:raidenlaugh:1080898399336931429>",
+    "1": "<:makoto:1124677514762145802> **Chapitre 1** : ***Un nouveau monde***",
+    "2": "Chapitre 2 : Une rencontre désagréable"
+  },
+  "quests": {
+    "bosses": {
+      "title": "<:raidenbird:1080897824440455288> Quête de Boss",
+      "luminara_beach": "Vous avez décidé d’explorer la côte ouest de l’île, et maintenant vous entrez dans la plage de Luminara, cette plage est occupée par un Mosshide vivant dans l’eau et sortant d’elle en créant un vortex. Vous tentez alors de faire demi-tour mais trop tard, vous êtes repéré\n\nVous avez la possibilité de choisir votre façon d’attaquer, **que faites-vous** ?",
+      "verdant_forest": "Votre exploration vous a conduit au nord de l'île dans la forêt Verdant, cette forêt est très peu visitée car un Mystralith y habite. Cette créature mi dragon mi serpent ne tue pas mais fera tout pour vous chasser. Malheureusement pour vous, elle vient de vous repérer malgré votre tentative de l'esquiver\n\nVous avez la possibilité de choisir votre façon d’attaquer, **que faites-vous** ?",
+      "fight": {
+        "1": "Attaque à l'arc",
+        "2": "Attaque aux bombes d'eau",
+        "3": "Attaque à l'épée à deux mains",
+        "4": "Attaque à la lance",
+        "5": "Attaque aux bombes de feu",
+        "6": "Attaque à la pluie d'éclairs",
+        "7": "Attaque à l'épée",
+        "8": "Jeter Makoto..."
+      },
+      "rewards": {
+        "1": "**Le boss a été vaincu** <:raidenfight:1189307569739661312>\nVous êtes blessé mais vous avez gagné:\n+**10** <:astralcoin:1317503233249378334>, +**1** <:astralecho:1317495053479972894>",
+        "2": "**Le boss a été vaincu** <:raidenfight:1189307569739661312>\nLe monstre a été compliqué à battre mais vous avez gagné:\n+**15** <:astralcoin:1317503233249378334>, +**2** <:astralecho:1317495053479972894>",
+        "3": "**Le boss a été vaincu** <:raidenfight:1189307569739661312>\nVous avez subi des dégâts mais vous avez gagné:\n+**20** <:astralcoin:1317503233249378334>, +**3** <:astralecho:1317495053479972894>",
+        "4": "**Le boss a été vaincu** <:raidenfight:1189307569739661312>\nLe combat était rude mais vous avez gagné:\n+**30** <:astralcoin:1317503233249378334>, +**4** <:astralecho:1317495053479972894>",
+        "5": "**Le boss a été vaincu** <:raidenfight:1189307569739661312>\nVotre force vous a permis de gagner:\n+**60** <:astralcoin:1317503233249378334>, +**5** <:astralecho:1317495053479972894>",
+        "6": "**Le boss a été vaincu** <:raidenfight:1189307569739661312>\nVotre courage vous a permis de gagner:\n+**70** <:astralcoin:1317503233249378334>, +**6** <:astralecho:1317495053479972894>",
+        "7": "**Le boss a été vaincu** <:raidenfight:1189307569739661312>\nGrâce à votre force, vous avez vaincu la créature et gagné:\n+**90** <:astralcoin:1317503233249378334>, +**8** <:astralecho:1317495053479972894>",
+        "8": "**Le boss a été vaincu** <:raidenfight:1189307569739661312>\nWoaw quel combat, vous avez réussi à gagner:\n+**100** <:astralcoin:1317503233249378334>, +**10** <:astralecho:1317495053479972894>",
+        "quantity": {
+          "1": "10,1",
+          "2": "15,2",
+          "3": "20,3",
+          "4": "30,4",
+          "5": "60,5",
+          "6": "70,6",
+          "7": "90,8",
+          "8": "100,10"
+        }
+      }
+    },
+    "daily": {
+      "title": "<:raidenbird:1080897824440455288> Quêtes Quotidiennes",
+      "description": "Tu peux accomplir des quêtes quotidiennes pour gagner des récompenses, ces quêtes sont réinitialisées toutes les 24 heures. Tu ne peux compléter que 3 quêtes quotidiennes par jour.\n\n**Quêtes du jour**\n",
+      "completed": "<:raidenlaugh:1080898399336931429> Vos quêtes quotidiennes sont terminées, pour en obtenir de nouvelles, revenez",
+      "quest_done": "Quête terminée | **+10** <:astralcoin:1317503233249378334>, **+1** <:astralecho:1317495053479972894>",
+      "quests": [
+        "Vaincre un Mosshide",
+        "Vaincre un Mystralith",
+        "Consulter votre Profil Astral",
+        "Vaincre un boss",
+        "En apprendre plus sur le Mosshide",
+        "En apprendre plus sur le Mystralith",
+        "En apprendre plus sur les Pièces Astral",
+        "En apprendre plus sur les Échos Astral"
+      ]
     }
   }
 }

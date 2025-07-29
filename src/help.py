@@ -1,6 +1,6 @@
 """
-The help file is providing commands to help
-a user with Raijin commands.
+The help file is providing commands to help a user with
+Raijin's commands and features.
 
 Commands:
     - help
@@ -17,19 +17,12 @@ from config.env import Database
 
 
 class Help(discord.Cog):
-    """
-    Help class is made to help a user by sending a
-    message to choose a category and get appropriate help
-    for a command. The user can also get help directly
-    by specifying a command name as a parameter
-    """
-
     def __init__(self, bot):
         self.bot = bot
         self.db = Database()
         self.conn = self.db.connect()
         self.cursor = self.conn.cursor()
-        self.default_color = 0x37266a
+        self.default_color = 0x37266A
         with open(
             os.path.dirname(__file__) + "/../res/lang/fr_FR.json", encoding="utf-8"
         ) as fr_file:
@@ -42,86 +35,109 @@ class Help(discord.Cog):
     def __del__(self):
         self.db.close()
 
+    def get_conn_cursor(self):
+        conn = self.db.connect()
+        cursor = conn.cursor()
+        return conn, cursor
+
     @discord.slash_command(name="help", description="📋 Request Raijin help")
     async def help(
         self,
         ctx,
     ):
         """
-        Send a help menu with multiple choice/Send details about a specific command
+        The help command is used to display the help menu
+        with the different categories and commands available.
         """
+        conn, cursor = self.get_conn_cursor()
         try:
-            self.conn.ping(reconnect=True)
-            self.cursor = self.conn.cursor()
+            if ctx.guild is None:
+                selected_language = self.en_lang
+            else:
+                cursor.execute(
+                    "SELECT `LANG` FROM `Account` WHERE `ID` = %s AND `GUILD` = %s",
+                    (ctx.author.id, ctx.guild.id),
+                )
+                fetched_account = cursor.fetchone()
+
+                if fetched_account is not None:
+                    selected_language = (
+                        self.fr_lang
+                        if fetched_account[0] == "Français"
+                        else self.en_lang
+                    )
+                else:
+                    selected_language = self.en_lang
+
+            category = Select(
+                options=[
+                    discord.SelectOption(
+                        label=selected_language["help"]["options"]["account"]["title"],
+                        value="account",
+                        description=selected_language["help"]["options"]["account"][
+                            "description"
+                        ],
+                        emoji="<:raidencards:1287740296662220931>",
+                    ),
+                    discord.SelectOption(
+                        label=selected_language["help"]["options"]["profile"]["title"],
+                        value="profile",
+                        description=selected_language["help"]["options"]["profile"][
+                            "description"
+                        ],
+                        emoji="<:raidenfight:1189307569739661312>",
+                    ),
+                    discord.SelectOption(
+                        label=selected_language["help"]["options"]["quests"]["title"],
+                        value="quests",
+                        description=selected_language["help"]["options"]["quests"][
+                            "description"
+                        ],
+                        emoji="<:raidenleaving:1189307571237044297>",
+                    ),
+                    discord.SelectOption(
+                        label=selected_language["help"]["options"]["astral"]["title"],
+                        value="astral",
+                        description=selected_language["help"]["options"]["astral"][
+                            "description"
+                        ],
+                        emoji="<:raidenbird:1080897824440455288>",
+                    ),
+                ],
+                placeholder=selected_language["help"]["selection"],
+                min_values=1,
+                max_values=1,
+            )
+            menu = discord.Embed(
+                title=selected_language["help"]["title"],
+                description=selected_language["help"]["description"],
+                color=self.default_color,
+            )
+
+            async def category_callback(interaction):
+                selected_value = interaction.data["values"][0]
+                selected_category = discord.Embed(
+                    title=selected_language["help"]["callback"][selected_value][
+                        "title"
+                    ],
+                    description=selected_language["help"]["callback"][selected_value][
+                        "description"
+                    ],
+                    color=self.default_color,
+                )
+                await interaction.response.edit_message(
+                    embed=selected_category, view=None
+                )
+
+            view = View()
+            view.add_item(category)
+            category.callback = category_callback
+            await ctx.respond(embed=menu, view=view)
         except mysql.connector.Error:
             raise
-
-        self.cursor.execute(
-            f"SELECT `LANG` FROM `Account` WHERE `ID` = '{ctx.author.id}' AND `GUILD` = '{ctx.guild.id}'"
-        )
-        fetched_account = self.cursor.fetchone()
-
-        if fetched_account is not None:
-            selected_language = (
-                self.fr_lang if fetched_account[0] == "Français" else self.en_lang
-            )
-        else:
-            selected_language = self.en_lang
-
-        category = Select(
-            options=[
-                discord.SelectOption(
-                    label=selected_language["help"]["options"]["account"]["title"],
-                    value="Account",
-                    description=selected_language["help"]["options"]["account"][
-                        "description"
-                    ],
-                    emoji="<:raidencards:1287740296662220931>",
-                ),
-                discord.SelectOption(
-                    label=selected_language["help"]["options"]["profile"]["title"],
-                    value="Profile",
-                    description=selected_language["help"]["options"]["profile"][
-                        "description"
-                    ],
-                    emoji="<:raidenfight:1189307569739661312>",
-                )
-            ],
-            placeholder=selected_language["help"]["selection"],
-            min_values=1,
-            max_values=1,
-        )
-        menu = discord.Embed(
-            title=selected_language["help"]["title"],
-            description=selected_language["help"]["description"],
-            color=self.default_color,
-        )
-
-        async def category_callback(interaction):
-            selected_value = interaction.data["values"][0]
-            if selected_value == "Account":
-                account = discord.Embed(
-                    title=selected_language["help"]["callback"]["account"]["title"],
-                    description=selected_language["help"]["callback"]["account"][
-                        "description"
-                    ],
-                    color=self.default_color,
-                )
-                await interaction.response.edit_message(embed=account, view=None)
-            if selected_value == "Profile":
-                account = discord.Embed(
-                    title=selected_language["help"]["callback"]["profile"]["title"],
-                    description=selected_language["help"]["callback"]["profile"][
-                        "description"
-                    ],
-                    color=self.default_color,
-                )
-                await interaction.response.edit_message(embed=account, view=None)
-
-        view = View()
-        view.add_item(category)
-        category.callback = category_callback
-        await ctx.respond(embed=menu, view=view)
+        finally:
+            cursor.close()
+            conn.close()
 
 
 def setup(bot):
