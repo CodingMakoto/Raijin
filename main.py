@@ -44,7 +44,7 @@ async def on_guild_join(guild):
         color=DEFAULT_COLOR,
     )
     welcoming.set_thumbnail(url="attachment://avatar.png")
-    welcoming.set_footer(text="Created and Developed by Makoto#7116")
+    welcoming.set_footer(text="Created and Developed by Atlys")
 
     channel = discord.utils.get(guild.text_channels)
     if channel.permissions_for(guild.me).send_messages:

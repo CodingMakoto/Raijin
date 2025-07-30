@@ -2,7 +2,7 @@
   "guild": {
     "welcome": {
       "title": "<:raidenbird:1080897824440455288> Raijin Discord Bot",
-      "details": "So... you want to start a new adventure with me ?\n\n> ・ Raijin Discord Bot is an Unofficial Genshin Impact Discord Bot using ONLY Slash Commands\n> ・ I can start the adventure for you with `/account start`\n> ・ To end the adventure with me use `/account end`\n> ・ When your account is created use `/story mode` and enjoy the adventure <:raidenannoyed:1287740293386469396>\n> ・ During your adventure you can fight bosses, recover your health with Archons Statues, fight hilichurls, discover daily quests and more...\n> ・ I let you discover that by yourself using `/help` <:raidenlaugh:1080898399336931429>\n> ・ You have more questions ? Well then I let you enter in [Raijin City](https://discord.gg/2AePNcphrs) ⚡\n\n<:beta:1233039955631276172> **Warning**: Currently in **BETA** version, some commands may not work as expected"
+      "details": "Ready to start a new adventure?\n\n・ Raijin is an unofficial Genshin Impact Discord Bot, using only slash commands.\n・ Start your journey with `/account start`.\n・ You can end your adventure anytime using `/account end`.\n・ During your journey, fight bosses, complete daily quests, and discover much more!\n・ For a full list of commands, use `/help`.\n・ Raijin is still evolving—new commands and features will be added regularly.\n・ Have more questions? Join our community at [Raijin City](https://discord.gg/2AePNcphrs)"
     }
   },
   "errors": {
